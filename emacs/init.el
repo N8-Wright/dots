@@ -1,4 +1,12 @@
 ;; ------------------------------------------------------------------------- ;;
+;;			     Basic Setup
+;; ------------------------------------------------------------------------- ;
+
+;; Change the place where custom-variables is set so it doesn't pollute
+;; the bottom of this file.
+(setq custom-file "~/.emacs.d/custom_set_variables.el")
+
+;; ------------------------------------------------------------------------- ;;
 ;;		          Package Initialization                             ;;
 ;; ------------------------------------------------------------------------- ;;
 (require 'package)
@@ -28,6 +36,4 @@
 (use-package doom-themes
   :config
   (load-theme 'doom-xcode t))
-
-
 
