@@ -6,6 +6,7 @@
 ;; the bottom of this file.
 (setq custom-file "~/.emacs.d/custom_set_variables.el")
 (setq epa-pinentry-mode 'loopback)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;; ------------------------------------------------------------------------- ;;
 ;;		          Package Initialization                             ;;
@@ -49,7 +50,6 @@
 (use-package which-key
   :config
   (which-key-mode))
-
 
 ;; ------------------------------------------------------------------------- ;;
 ;;			     Programming                                     ;;
