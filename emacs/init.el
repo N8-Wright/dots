@@ -43,5 +43,30 @@
 ;; ------------------------------------------------------------------------- ;;
 (use-package magit)
 
+;; ------------------------------------------------------------------------- ;;
+;;				C/C++                                        ;;
+;; ------------------------------------------------------------------------- ;;
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook
+  (c++-mode .lsp)
+  (c-mode . lsp)
+  (lsp-mode .lsp-enable-which-key-integration)
+  :commands
+  lsp)
+
+;; lsp-mode will detect and auto configure the use of these packages
+(use-package lsp-ui
+  :commands
+  (lsp-ui-mode))
+(use-package company)
+
+
+
 
 
