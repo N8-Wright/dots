@@ -98,6 +98,48 @@
 (add-hook 'c-mode-common-hook #'nathan/c-mode-common-hook)
 
 ;; ------------------------------------------------------------------------- ;;
+;;				 Code                                        ;;
+;; ------------------------------------------------------------------------- ;;
+(use-package s)
+(defun n/to-snake-case (start end)
+  "Change selected text to snake_case format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((camel-case-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-snake-case camel-case-str)))
+    (message "No region selected")))
+
+(defun n/to-camel-case (start end)
+  "Change selected text to camelCase format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((selected-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-lower-camel-case selected-str)))
+    (message "No region selected")))
+
+(defun n/to-private-variable (start end)
+  (interactive "r")
+  (n/to-camel-case start end)
+  (if (use-region-p)
+      (let ((selected-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert "_")
+        (insert selected-str)))
+    (message "No region selected"))
+
+(defun n/to-pascal-case (start end)
+  "Change selected text to PascalCase format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((selected-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-upper-camel-case selected-str)))
+    (message "No region selected")))
+
+
+;; ------------------------------------------------------------------------- ;;
 ;;			       Homepath                                      ;;
 ;; ------------------------------------------------------------------------- ;;
 (with-system windows-nt
@@ -110,3 +152,39 @@
 (with-system darwin
 	     (setq mac-option-modifier 'meta)
 	     (setq nathan/homepath (file-truename "~/")))
+
+;; ------------------------------------------------------------------------- ;;
+;;			      Minibuffer                                     ;;
+;; ------------------------------------------------------------------------- ;;
+(use-package counsel)
+(use-package ivy
+  :bind
+  (("M-x" . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("C-h f" . counsel-describe-function)
+   ("\C-s" . swiper))
+  :config
+  (ivy-mode))
+
+;; ------------------------------------------------------------------------- ;;
+;;				Editor                                       ;;
+;; ------------------------------------------------------------------------- ;;
+(use-package expand-region)
+(use-package multiple-cursors)
+
+;; ------------------------------------------------------------------------- ;;
+;;			     Keybindings                                     ;;
+;; ------------------------------------------------------------------------- ;;
+(unbind-key "C-z")
+(bind-key (kbd "C-z f s") #'n/to-snake-case)
+(bind-key (kbd "C-z f c") #'n/to-camel-case)
+(bind-key (kbd "C-z f p") #'n/to-pascal-case)
+(bind-key (kbd "C-z f _") #'n/to-private-variable)
+(bind-key (kbd "C-z i g") #'n/generate-guid)
+
+(bind-key (kbd "C-=") #'er/expand-region)
+(bind-key (kbd "C--") #'er/contract-region)
+
+(bind-key (kbd "C->") #'mc/mark-next-like-this)
+(bind-key (kbd "C-<") #'mc/mark-previous-like-this)
+(bind-key (kbd "C-c C-<") #'mc/mark-all-like-this)
