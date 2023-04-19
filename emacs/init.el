@@ -51,6 +51,12 @@
   :config
   (which-key-mode))
 
+(defmacro with-system (type &rest body)
+  "Evaluate BODY if `system-type' equals TYPE."
+  (declare (indent defun))
+  `(when (eq system-type ',type)
+     ,@body))
+
 ;; ------------------------------------------------------------------------- ;;
 ;;			     Programming                                     ;;
 ;; ------------------------------------------------------------------------- ;;
@@ -88,3 +94,17 @@
   )
 
 (add-hook 'c-mode-common-hook #'nathan/c-mode-common-hook)
+
+;; ------------------------------------------------------------------------- ;;
+;;			       Homepath                                      ;;
+;; ------------------------------------------------------------------------- ;;
+(with-system windows-nt
+	     (setq nathan/homepath
+		   (file-name-as-directory (file-truename (getenv "HOMEPATH")))))
+
+(with-system gnu/linux
+	     (setq nathan/homepath (file-truename "~/")))
+
+(with-system darwin
+	     (setq mac-option-modifier 'meta)
+	     (setq nathan/homepath (file-truename "~/")))
