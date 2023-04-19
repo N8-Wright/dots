@@ -5,6 +5,7 @@
 ;; Change the place where custom-variables is set so it doesn't pollute
 ;; the bottom of this file.
 (setq custom-file "~/.emacs.d/custom_set_variables.el")
+(setq epa-pinentry-mode 'loopback)
 
 ;; ------------------------------------------------------------------------- ;;
 ;;		          Package Initialization                             ;;
