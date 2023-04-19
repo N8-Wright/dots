@@ -7,6 +7,8 @@
 (setq custom-file "~/.emacs.d/custom_set_variables.el")
 (setq epa-pinentry-mode 'loopback)
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
+;; Don't litter backup files everywhere
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 ;; ------------------------------------------------------------------------- ;;
 ;;		          Package Initialization                             ;;
