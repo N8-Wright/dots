@@ -200,3 +200,7 @@
 (bind-key (kbd "C-c C-<") #'mc/mark-all-like-this)
 
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+(add-hook 'csharp-mode-hook (lambda ()
+			      (bind-key (kbd "C-z t p") #'lsp-csharp-run-test-at-point)
+			      (bind-key (kbd "C-z t b") #'lsp-csharp-run-all-tests-in-buffer)))
