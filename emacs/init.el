@@ -61,6 +61,8 @@
   `(when (eq system-type ',type)
      ,@body))
 
+(use-package crux)
+
 ;; ------------------------------------------------------------------------- ;;
 ;;			     Programming                                     ;;
 ;; ------------------------------------------------------------------------- ;;
@@ -204,3 +206,11 @@
 (add-hook 'csharp-mode-hook (lambda ()
 			      (bind-key (kbd "C-z t p") #'lsp-csharp-run-test-at-point)
 			      (bind-key (kbd "C-z t b") #'lsp-csharp-run-all-tests-in-buffer)))
+
+(bind-key (kbd "C-k") #'crux-smart-kill-line)
+(bind-key (kbd "C-S-RET") #'crux-smart-open-line-above)
+(bind-key (kbd "C-x 4 t") #'crux-transpose-windows)
+(bind-key (kbd "C-c d") #'crux-duplicate-current-line-or-region)
+(bind-key (kbd "C-c r") #'crux-rename-file-and-buffer)
+(bind-key (kbd "C-c k") #'crux-kill-other-buffers)
+(bind-key (kbd "C-c I") #'crux-find-user-init-file)
