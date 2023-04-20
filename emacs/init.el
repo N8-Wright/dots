@@ -64,12 +64,18 @@
 ;; ------------------------------------------------------------------------- ;;
 ;;			     Programming                                     ;;
 ;; ------------------------------------------------------------------------- ;;
+(use-package csharp-mode) ;; TODO: remove in emacs 29
+(use-package editor-config
+  :config
+  (editor-config-mode +1))
+
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
   :hook
   (c++-mode .lsp)
   (c-mode . lsp)
+  (csharp-mode . lsp)
   (lsp-mode .lsp-enable-which-key-integration)
   :commands
   lsp)
