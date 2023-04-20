@@ -198,3 +198,5 @@
 (bind-key (kbd "C->") #'mc/mark-next-like-this)
 (bind-key (kbd "C-<") #'mc/mark-previous-like-this)
 (bind-key (kbd "C-c C-<") #'mc/mark-all-like-this)
+
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
