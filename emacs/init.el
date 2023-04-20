@@ -9,6 +9,8 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 ;; Don't litter backup files everywhere
 (setq backup-directory-alist `(("." . "~/.saves")))
+(setq gc-cons-threshold 24000000)
+(setq read-process-output-max (* 1024 1024)) ;; Increase to 1mb for lsp
 
 ;; ------------------------------------------------------------------------- ;;
 ;;		          Package Initialization                             ;;
