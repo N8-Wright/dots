@@ -41,7 +41,7 @@
 (scroll-bar-mode -1)
 (use-package doom-themes
   :config
-  (load-theme 'doom-xcode t))
+  (load-theme 'doom-one-light t))
 
 ;; ------------------------------------------------------------------------- ;;
 ;;			    Source Control                                   ;;
