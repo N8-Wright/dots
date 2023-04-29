@@ -11,3 +11,11 @@ vim.opt.shiftwidth = 4
 -- Always indent using spaces
 vim.opt.expandtab = true 
 
+-- Show line numbers
+vim.opt.number = true
+
+-- Disable highlight results of previous search
+vim.opt.hlsearch = false
+
+vim.g.mapleader = ','
+
