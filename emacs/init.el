@@ -70,9 +70,13 @@
 (use-package editorconfig
   :config
   (editorconfig-mode +1))
+
 (use-package projectile
   :config
-  (projectile-mode +1))
+  (projectile-mode +1)
+  :custom
+  (projectile-indexing-method 'alien))
+
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
