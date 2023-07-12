@@ -73,3 +73,29 @@
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
+(use-package swiper)
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :demand
+  :config
+  (ivy-mode 1))
+  
+(use-package projectile
+  :config (projectile-mode)
+  :bind-keymap
+  ("C-c p" . projectile-command-map))
+
+
