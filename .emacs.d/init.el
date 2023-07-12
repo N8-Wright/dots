@@ -53,12 +53,15 @@
 (use-package magit)
 
 (when (eq system-type 'darwin)
-    (defun njw/appearance-change-hook ()
-      (let ((appearance (plist-get (mac-application-state) :appearance)))
-	(cond ((equal appearance "NSAppearanceNameAqua")
-               (load-theme 'doom-plain t nil))
-              ((equal appearance "NSAppearanceNameDarkAqua")
-               (load-theme 'doom-plain-dark t nil)))))
+  ;; On macos we can hook into the native dark/light mode system settings
+  ;; Found: https://www.reddit.com/r/emacs/comments/ym9jw3/autodarkemacs_an_automatic_theme_changer_for/
+  ;; Required: railwaycat's emacs -> https://github.com/railwaycat/homebrew-emacsmacport
+  (defun njw/appearance-change-hook ()
+    (let ((appearance (plist-get (mac-application-state) :appearance)))
+      (cond ((equal appearance "NSAppearanceNameAqua")
+             (load-theme 'doom-plain t nil))
+            ((equal appearance "NSAppearanceNameDarkAqua")
+             (load-theme 'doom-plain-dark t nil)))))
   
   (add-hook 'after-init-hook 'njw/appearance-change-hook)
   (add-hook 'mac-effective-appearance-change-hook 'njw/appearance-change-hook))
