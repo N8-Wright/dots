@@ -1,3 +1,9 @@
+(defmacro with-system (type &rest body)
+  "Evaluate BODY if `system-type' equals TYPE."
+  (declare (indent defun))
+  `(when (eq system-type ',type)
+     ,@body))
+
 ;; Set the preferred font
 (set-frame-font "SF Mono 16" nil t)
 
@@ -52,7 +58,7 @@
 
 (use-package magit)
 
-(when (eq system-type 'darwin)
+(with-system darwin
   ;; On macos we can hook into the native dark/light mode system settings
   ;; Found: https://www.reddit.com/r/emacs/comments/ym9jw3/autodarkemacs_an_automatic_theme_changer_for/
   ;; Required: railwaycat's emacs -> https://github.com/railwaycat/homebrew-emacsmacport
@@ -113,4 +119,64 @@
   )
 
 (add-hook 'c-mode-common-hook #'njw/c-mode-common-hook)
+
+(use-package s)
+(defun njw/to-snake-case (start end)
+  "Change selected text to snake_case format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((camel-case-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-snake-case camel-case-str)))
+    (message "No region selected")))
+
+(defun njw/to-camel-case (start end)
+  "Change selected text to camelCase format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((selected-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-lower-camel-case selected-str)))
+    (message "No region selected")))
+
+(defun njw/to-private-variable (start end)
+  (interactive "r")
+  (njw/to-camel-case start end)
+  (if (use-region-p)
+      (let ((selected-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert "_")
+        (insert selected-str)))
+    (message "No region selected"))
+
+(defun njw/to-pascal-case (start end)
+  "Change selected text to PascalCase format"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((selected-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-upper-camel-case selected-str)))
+    (message "No region selected")))
+
+(with-system windows-nt
+  (defun njw/generate-guid ()
+    (interactive)
+    (shell-command "powershell.exe -Command [guid]::NewGuid().toString()" t)))
+
+(with-system darwin
+  (defun njw/generate-guid ()
+    (interactive)
+    (shell-command "uuidgen" t)))
+
+(with-system gnu/linux
+  (defun njw/generate-guid ()
+    (interactive)
+    (shell-command "uuidgen" t)))
+
+(unbind-key "C-z")
+(bind-key (kbd "C-z f s") #'njw/to-snake-case)
+(bind-key (kbd "C-z f c") #'njw/to-camel-case)
+(bind-key (kbd "C-z f p") #'njw/to-pascal-case)
+(bind-key (kbd "C-z f _") #'njw/to-private-variable)
+(bind-key (kbd "C-z i g") #'njw/generate-guid)
 
