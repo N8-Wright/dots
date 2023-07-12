@@ -1,0 +1,7 @@
+* How To's
+** Edit multiple lines
+1. C-x SPACE (rectangle-mark-mode)
+2. Move the rectangle around column or row-wise
+3. C-x r t (string rectangle)
+   
+   
