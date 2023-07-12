@@ -66,3 +66,10 @@
   (add-hook 'after-init-hook 'njw/appearance-change-hook)
   (add-hook 'mac-effective-appearance-change-hook 'njw/appearance-change-hook))
 
+(use-package which-key
+  :defer 0
+  :diminish which-key-mode
+  :config
+  (which-key-mode)
+  (setq which-key-idle-delay 1))
+
