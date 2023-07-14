@@ -34,6 +34,7 @@
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
+		vterm-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -98,7 +99,12 @@
   :demand
   :config
   (ivy-mode 1))
-  
+
+;; This requires that you have libtool installed and are able to compile
+;; C code with cmake.
+;; See: https://github.com/akermu/emacs-libvterm
+(use-package vterm)
+
 (use-package projectile
   :config (projectile-mode)
   :bind-keymap

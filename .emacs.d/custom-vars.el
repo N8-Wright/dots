@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(swiper ivy projectile which-key auto-dark magit doom-themes all-the-icons doom-modeline use-package)))
+   '(vterm-module vterm swiper ivy projectile which-key auto-dark magit doom-themes all-the-icons doom-modeline use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
