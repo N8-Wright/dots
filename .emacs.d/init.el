@@ -21,6 +21,8 @@
 (setq custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file 'noerror 'nomessage)
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Revert buffers when the underlying file has changed
 (global-auto-revert-mode 1)
 
@@ -55,7 +57,7 @@
   (doom-modeline-height 40))
 
 (use-package doom-themes)
-(load-theme 'doom-plain t nil)
+(load-theme 'doom-acario-light t nil)
 
 (use-package magit)
 
@@ -66,10 +68,10 @@
   (defun njw/appearance-change-hook ()
     (let ((appearance (plist-get (mac-application-state) :appearance)))
       (cond ((equal appearance "NSAppearanceNameAqua")
-             (load-theme 'doom-plain t nil))
+             (load-theme 'doom-acario-light t nil))
             ((equal appearance "NSAppearanceNameDarkAqua")
-             (load-theme 'doom-plain-dark t nil)))))
-  
+             (load-theme 'doom-acario-dark t nil)))))
+
   (add-hook 'after-init-hook 'njw/appearance-change-hook)
   (add-hook 'mac-effective-appearance-change-hook 'njw/appearance-change-hook))
 
@@ -195,4 +197,3 @@
 (bind-key (kbd "C-z f p") #'njw/to-pascal-case)
 (bind-key (kbd "C-z f _") #'njw/to-private-variable)
 (bind-key (kbd "C-z i g") #'njw/generate-guid)
-
