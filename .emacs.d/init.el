@@ -5,7 +5,6 @@
      ,@body))
 
 ;; Set the preferred font
-(set-frame-font "SF Mono 16" nil t)
 (with-system darwin
   (set-frame-font "SF Mono 16" nil t))
 (with-system windows-nt
@@ -114,7 +113,9 @@
 (use-package projectile
   :config (projectile-mode)
   :bind-keymap
-  ("C-c p" . projectile-command-map))
+  ("C-c p" . projectile-command-map)
+  :custom
+  (projectile-indexing-method 'alien))
 
 (use-package editorconfig
   :config
