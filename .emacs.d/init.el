@@ -128,6 +128,7 @@
          (c-mode . lsp)
 	 (cc-mode . lsp)
 	 (c++-mode . lsp)
+	 (csharp-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
