@@ -6,6 +6,10 @@
 
 ;; Set the preferred font
 (set-frame-font "SF Mono 16" nil t)
+(with-system darwin
+  (set-frame-font "SF Mono 16" nil t))
+(with-system windows-nt
+  (set-frame-font "Consolas" nil t))
 
 ;; Turn off modes that are not needed
 (setq inhibit-startup-message t)
