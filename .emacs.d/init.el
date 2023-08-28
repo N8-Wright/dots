@@ -112,6 +112,33 @@
   :bind-keymap
   ("C-c p" . projectile-command-map))
 
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (c-mode . lsp)
+	 (cc-mode . lsp)
+	 (c++-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package company)
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+(require 'dap-cpptools)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+(use-package clang-format)
+
 (defun njw/c-mode-common-hook ()
   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
   (c-set-offset 'substatement-open 0)
@@ -124,6 +151,7 @@
   (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
   (setq tab-width 4)
   (setq indent-tabs-mode t)  ; use spaces only if nil
+  (add-hook 'before-save-hook #'clang-format-buffer)
   )
 
 (add-hook 'c-mode-common-hook #'njw/c-mode-common-hook)
