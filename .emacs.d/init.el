@@ -116,6 +116,10 @@
   :bind-keymap
   ("C-c p" . projectile-command-map))
 
+(use-package editorconfig
+  :config
+  (editorconfig-mode +1))
+
 (use-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
