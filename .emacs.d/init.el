@@ -1,3 +1,6 @@
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (defmacro with-system (type &rest body)
   "Evaluate BODY if `system-type' equals TYPE."
   (declare (indent defun))
@@ -134,6 +137,7 @@
 
 
 (use-package clang-format)
+(use-package flycheck)
 (defun njw/c-mode-common-hook ()
   "My customizations for all of c-mode, c++-mode, objc-mode, java-mode"
 
@@ -149,24 +153,20 @@
   (setq indent-tabs-mode t)  ; use spaces only if nil
   (add-hook 'before-save-hook #'clang-format-buffer)
 
-  (eglot)
   (company-mode)
   (flymake-mode)
+  (flycheck-mode)
   )
 
 (add-hook 'c-mode-common-hook #'njw/c-mode-common-hook)
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '((c-mode c++-mode)
-                 . ("clangd"
-                    "-j=8"
-                    "--log=error"
-                    "--background-index"
-                    "--clang-tidy"
-                    "--completion-style=detailed"
-                    "--pch-storage=memory"
-                    "--header-insertion=never"
-                    "--header-insertion-decorators=0"))))
+              '((c-mode c++-mode)
+                . ("clangd"
+                   "-j=12"
+                   "--log=error"
+                   "--completion-style=detailed"
+                   "--pch-storage=memory"))))
 
 (use-package s)
 (defun njw/to-snake-case (start end)
