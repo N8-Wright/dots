@@ -166,7 +166,9 @@
                    "-j=12"
                    "--log=error"
                    "--completion-style=detailed"
-                   "--pch-storage=memory"))))
+                   "--pch-storage=memory")))
+  (add-to-list 'eglot-server-programs
+	       `(csharp-mode . ("omnisharp" "-lsp"))))
 
 (use-package s)
 (defun njw/to-snake-case (start end)
@@ -238,3 +240,6 @@
 (bind-key (kbd "C-z f p") #'njw/to-pascal-case)
 (bind-key (kbd "C-z f _") #'njw/to-private-variable)
 (bind-key (kbd "C-z i g") #'njw/generate-guid)
+(bind-key (kbd "C-z c d") #'xref-find-definitions)
+(bind-key (kbd "C-z c f") #'xref-find-refperences)
+(bind-key (kbd "C-z c r") #'eglot-rename)
