@@ -241,5 +241,5 @@
 (bind-key (kbd "C-z f _") #'njw/to-private-variable)
 (bind-key (kbd "C-z i g") #'njw/generate-guid)
 (bind-key (kbd "C-z c d") #'xref-find-definitions)
-(bind-key (kbd "C-z c f") #'xref-find-refperences)
+(bind-key (kbd "C-z c f") #'xref-find-references)
 (bind-key (kbd "C-z c r") #'eglot-rename)
