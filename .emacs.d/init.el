@@ -4,6 +4,17 @@
   `(when (eq system-type ',type)
      ,@body))
 
+;; Set homepath
+(with-system windows-nt
+  (setq njw/homepath
+	(file-name-as-directory (file-truename (getenv "HOMEPATH")))))
+
+(with-system gnu/linux
+  (setq njw/homepath (file-truename "~/")))
+
+(with-system darwin
+  (setq njw/homepath (file-truename "~/")))
+
 ;; Set the preferred font
 (with-system darwin
   (set-frame-font "SF Mono 16" nil t))
@@ -121,36 +132,11 @@
   :config
   (editorconfig-mode +1))
 
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (c-mode . lsp)
-	 (cc-mode . lsp)
-	 (c++-mode . lsp)
-	 (csharp-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
-;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
-;; if you are helm user
-
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-(use-package company)
-
-;; optionally if you want to use debugger
-(use-package dap-mode)
-(require 'dap-cpptools)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 (use-package clang-format)
-
 (defun njw/c-mode-common-hook ()
-  ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
+  "My customizations for all of c-mode, c++-mode, objc-mode, java-mode"
+
   (c-set-offset 'substatement-open 0)
   ;; other customizations can go here
 
@@ -162,14 +148,31 @@
   (setq tab-width 4)
   (setq indent-tabs-mode t)  ; use spaces only if nil
   (add-hook 'before-save-hook #'clang-format-buffer)
+
+  (eglot)
+  (company-mode)
+  (flymake-mode)
   )
 
 (add-hook 'c-mode-common-hook #'njw/c-mode-common-hook)
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '((c-mode c++-mode)
+                 . ("clangd"
+                    "-j=8"
+                    "--log=error"
+                    "--background-index"
+                    "--clang-tidy"
+                    "--completion-style=detailed"
+                    "--pch-storage=memory"
+                    "--header-insertion=never"
+                    "--header-insertion-decorators=0"))))
 
 (use-package s)
 (defun njw/to-snake-case (start end)
   "Change selected text to snake_case format"
   (interactive "r")
+  (require 's)
   (if (use-region-p)
       (let ((camel-case-str (buffer-substring start end)))
         (delete-region start end)
