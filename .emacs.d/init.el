@@ -122,7 +122,8 @@
 ;; This requires that you have libtool installed and are able to compile
 ;; C code with cmake.
 ;; See: https://github.com/akermu/emacs-libvterm
-(use-package vterm)
+(unless (with-system windows-nt)
+     (use-package vterm))
 
 (use-package projectile
   :config (projectile-mode)
