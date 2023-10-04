@@ -1,4 +1,4 @@
-(defun arrayify (start end quote)
+(defun n/arrayify (start end quote)
   "Turn strings on newlines into a QUOTEd, comma-separated one-liner."
   (interactive "r\nMQuote: ")
   (let ((insertion

@@ -8,3 +8,5 @@
 (define-key ctl-l-map (kbd "s i") 'c-if-statement)
 (define-key ctl-l-map (kbd "s f e") 'csharp-foreach-loop)
 (define-key ctl-l-map (kbd "s n") 'skeleton-next-position)
+(define-key ctl-l-map (kbd "u a") 'n/arrayify)
+(define-key ctl-l-map (kbd "u g") 'n/generate-guid)
