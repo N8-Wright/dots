@@ -1,2 +1,3 @@
 .emacs.d/.*
 .emacs.d/projects
+.emacs.d/auto-save-list
