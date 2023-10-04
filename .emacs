@@ -4,10 +4,9 @@
       make-backup-files nil)
 
 (setq-default indent-tabs-mode nil)
+(dolist (mode '(tool-bar-mode scroll-bar-mode menu-bar-mode))
+  (when (fboundp mode) (funcall mode -1)))
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 (load-theme 'modus-operandi t)
 (blink-cursor-mode -1)
 (global-hl-line-mode 1)
@@ -69,7 +68,10 @@
 (define-skeleton csharp-foreach-loop
   "Insert a foreach loop"
   ""
-  > "foreach (var "(skeleton-read "Var Name: ") " in " (skeleton-read "List Name: ") ")"  \n
+  > "foreach (var "
+  (skeleton-read "Var Name: ")
+  " in "
+  (skeleton-read "List Name: ") ")"  \n
   -4 "{" \n
   _ \n
   -4 "}")
