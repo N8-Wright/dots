@@ -1,4 +1,11 @@
-﻿;; Load the configuration
+﻿(require 'use-package)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+;; Load the configuration
 (dolist (dir (list "lisp" "config" user-login-name))
   (let ((config-dir (expand-file-name dir user-emacs-directory)))
     (when (file-exists-p config-dir)

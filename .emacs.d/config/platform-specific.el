@@ -16,7 +16,7 @@
          grep-program "C:\\Program Files\\Git\\usr\\bin\\grep.exe"))
   (_
    (message "Using unix configuration")
-   (set-frame-font "SF Mono 12" nil t)
+   (set-frame-font "SF Mono 15" nil t)
    (prefer-coding-system 'utf-8-with-signature-unix)
    (set-default-coding-systems 'utf-8-with-signature-unix)
    (set-selection-coding-system 'utf-8-with-signature-unix)))
