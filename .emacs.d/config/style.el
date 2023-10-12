@@ -12,4 +12,3 @@
 (blink-cursor-mode -1)
 (global-hl-line-mode 1)
 (global-auto-revert-mode 1)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
