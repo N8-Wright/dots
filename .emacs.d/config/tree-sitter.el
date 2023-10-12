@@ -1,5 +1,13 @@
 (require 'treesit)
 
+(defun treesitter-lib-exists (lang)
+  (let ((exists  nil)
+        (dir (expand-file-name "tree-sitter" user-emacs-directory)))
+    (when (file-exists-p dir)
+        (dolist (tlib (directory-files dir))
+          (if (string-match-p lang tlib) (setq exists t)))
+      exists)))
+
 (defun setup-treesitter ()
     (setq treesit-language-source-alist
             '((bash "https://github.com/tree-sitter/tree-sitter-bash")
@@ -8,11 +16,12 @@
               (javascript "https://github.com/tree-sitter/tree-sitter-javascript")))
 
     (mapc (lambda (lang)
-            ;; (dolist (tlib (directory-files (expand-file-name "tree-sitter" user-emacs-directory)))
-            ;;   (if (string-match-p (prin1-to-string 'lang) tlib)
-            ;;       (message tlib)))
-            (treesit-install-language-grammar lang))
-          (mapcar #'car treesit-language-source-alist))
+            (let ((lang-str (prin1-to-string lang)))
+              (message (concat "Trying to load lang: " lang-str))
+              (if (not (treesitter-lib-exists lang-str))
+                  (treesit-install-language-grammar lang)
+                  (message (concat lang-str " is already compiled...")))))
+            (mapcar #'car treesit-language-source-alist))
 
 
     ;; Add modes that don't have an equivalent in the default set
