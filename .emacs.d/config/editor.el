@@ -4,4 +4,4 @@
 
 (use-package ws-butler
   :hook
-  (prog-mode . #'ws-butler-mode))
+  (prog-mode . ws-butler-mode))
