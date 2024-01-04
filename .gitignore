@@ -4,3 +4,5 @@
 .emacs.d/emacs-custom.el
 .emacs.d/recentf
 .emacs.d/elpa
+.emacs.d/bookmarks
+.emacs.d/transient
