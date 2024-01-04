@@ -1,3 +1,6 @@
 .emacs.d/.*
 .emacs.d/projects
 .emacs.d/auto-save-list
+.emacs.d/emacs-custom.el
+.emacs.d/recentf
+.emacs.d/elpa
