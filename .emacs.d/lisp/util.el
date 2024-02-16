@@ -17,3 +17,11 @@
      (shell-command "powershell.exe -Command [guid]::NewGuid().toString()" t))
     (_
      (shell-command "uuidgen" t))))
+
+;; https://www.masteringemacs.org/article/fixing-mark-commands-transient-mark-mode
+(defun n/push-mark-no-activate ()
+  "Pushes `point' to `mark-ring' and does not activate the region
+   Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  (interactive)
+  (push-mark (point) t nil)
+  (message "Pushed mark to ring"))

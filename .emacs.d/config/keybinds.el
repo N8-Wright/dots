@@ -10,3 +10,5 @@
 (define-key ctl-l-map (kbd "s n") 'skeleton-next-position)
 (define-key ctl-l-map (kbd "u a") 'n/arrayify)
 (define-key ctl-l-map (kbd "u g") 'n/generate-guid)
+
+(global-set-key (kbd "C-`") 'n/push-mark-no-activate)
