@@ -15,7 +15,6 @@
 (load "nw-java.el")
 (load "nw-edit.el")
 (load "nw-util.el")
-(load "nw-notes.el")
 
 (ivy-mode)
 (which-key-mode)
