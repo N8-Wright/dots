@@ -7,14 +7,14 @@
  'which-key
  'magit
  'clang-format
- 'dap-mode
  'company
- 'org-roam)
+ 'yasnippet)
 
 (load "nw-cpp.el")
 (load "nw-java.el")
 (load "nw-edit.el")
 (load "nw-util.el")
+(load "nw-snippets.el")
 
 (ivy-mode)
 (which-key-mode)

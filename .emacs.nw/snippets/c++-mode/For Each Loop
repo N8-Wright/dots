@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: For Each Loop
+# key: fe
+# expand-env: ((yas-indent-line 'fixed))
+# --
+for (${1:const auto& }${2:item} : ${3:items})
+{
+    $0
+}
+

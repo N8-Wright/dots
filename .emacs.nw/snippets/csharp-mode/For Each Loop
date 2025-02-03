@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: For Each Loop (https://github.com/AndreaCrotti/yasnippet-snippets/blob/master/snippets/csharp-mode/fore)
+# key: fe
+# --
+
+foreach (${1:var} ${2:item} in ${3:list})
+{
+    $0
+}
+

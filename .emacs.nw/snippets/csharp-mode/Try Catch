@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Try Catch (https://github.com/AndreaCrotti/yasnippet-snippets/blob/master/snippets/csharp-mode/trycatch)
+# key: tc
+# --
+
+try
+{
+	$0
+}
+catch (${1:Exception} ex)
+{
+	${2:Console.WriteLine(ex.ToString());}
+}
+

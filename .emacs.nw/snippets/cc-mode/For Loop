@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: For Loop (https://github.com/AndreaCrotti/yasnippet-snippets/blob/master/snippets/cc-mode/for)
+# key: f
+# --
+
+for (${1:int i = 0}; ${2:i < N}; ${3:++i})
+{
+    $0
+}
+
