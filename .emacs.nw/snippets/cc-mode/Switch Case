@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: Switch Case
+# name: Switch Case (https://github.com/AndreaCrotti/yasnippet-snippets/blob/master/snippets/cc-mode/case)
 # key: ca
 # expand-env: ((yas-also-auto-indent-first-line t))
 # --
