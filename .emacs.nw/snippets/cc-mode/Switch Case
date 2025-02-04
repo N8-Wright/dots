@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Switch Case
+# key: ca
+# expand-env: ((yas-also-auto-indent-first-line t))
+# --
+
+case ${1:constexpr}:
+${2: \{}
+	 $0
+${2:$(if (string-match "\{" yas-text) "\}" "")} break;
+
