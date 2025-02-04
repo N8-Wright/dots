@@ -1,11 +1,12 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
 (defvar nw/package-contents-refreshed
   nil
   "Indicates wether the package archives have been refreshed this session")
-
 (defun nw/package-contents-refresh-once ()
   (when (not nw/package-contents-refreshed)
 	(package-initialize)
-	(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
     (setq nw/package-contents-refreshed t)
     (package-refresh-contents)))
 

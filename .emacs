@@ -8,13 +8,15 @@
  'magit
  'clang-format
  'company
- 'yasnippet)
+ 'yasnippet
+ 'yaml-mode)
 
 (load "nw-cpp.el")
 (load "nw-java.el")
 (load "nw-edit.el")
 (load "nw-util.el")
 (load "nw-snippets.el")
+(load "nw-git.el")
 
 (ivy-mode)
 (which-key-mode)
