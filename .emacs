@@ -22,6 +22,7 @@
 (load "nw-git.el")
 (load "nw-dired.el")
 (load "nw-project.el")
+(load "nw-prog.el")
 
 (ivy-mode)
 (which-key-mode)

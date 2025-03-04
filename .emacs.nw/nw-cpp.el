@@ -48,11 +48,6 @@ directory that has a .git folder"
 
 (nw/c-mode-auto-enable)
 (defun nw/c-common-hook ()
-  ;; Enable company so that we can has nicer yasnippet completions and
-  ;; better completions in general if we are able to start eglot
-  (company-mode)
-
-  (setq-default indent-tabs-mode nil)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'case-label 0)
   (c-set-offset 'statement-case-open 0)
@@ -64,3 +59,4 @@ directory that has a .git folder"
 	   tab-width 4
 	   indent-tabs-mode t))
 (add-hook 'c-mode-common-hook 'nw/c-common-hook)
+
