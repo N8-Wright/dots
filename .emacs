@@ -11,7 +11,8 @@
  'yasnippet
  'yaml-mode
  'projectile
- 'markdown-mode)
+ 'markdown-mode
+ 'powershell)
 
 (load "nw-cpp.el")
 (load "nw-java.el")
