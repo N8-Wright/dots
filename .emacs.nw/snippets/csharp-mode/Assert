@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Assert
+# key: as
+# --
+
+Debug.Assert($1, "$0");

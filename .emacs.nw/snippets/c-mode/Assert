@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Assert
+# key: as
+# --
+
+assert($1 && "$0");
