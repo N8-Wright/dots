@@ -27,7 +27,7 @@ directory that has a .git folder"
 	  (directory-files-recursively (nw/find-root-git) "compile_commands.json"))))
 
 (define-minor-mode nw/c-mode
-  "Buffer-local mode to enable/disable automated clang format on save"  
+  "Buffer-local mode to enable/disable automated clang format on save"
   :lighter " NW/C-Mode"
   (if nw/c-mode
 	  (progn
@@ -48,6 +48,10 @@ directory that has a .git folder"
 
 (nw/c-mode-auto-enable)
 (defun nw/c-common-hook ()
+  ;; Enable company so that we can has nicer yasnippet completions and
+  ;; better completions in general if we are able to start eglot
+  (company-mode)
+
   (setq-default indent-tabs-mode nil)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'case-label 0)

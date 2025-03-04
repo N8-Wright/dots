@@ -35,6 +35,7 @@
 (keymap-global-set "C-z u" 'nw/insert-random-uuid)
 (keymap-global-set "C-z c" 'flyspell-auto-correct-previous-word)
 (keymap-global-set "C-c p" 'projectile-command-map)
+(keymap-global-set "C-q" 'company-yasnippet)
 
 (load custom-file)
 
