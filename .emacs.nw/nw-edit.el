@@ -11,3 +11,4 @@
 		(forward-char column)))
 
 (add-hook 'org-mode-hook 'flyspell-mode)
+(add-hook 'before-save-hook 'delete-trailing-whitespace t)
