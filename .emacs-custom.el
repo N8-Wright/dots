@@ -6,7 +6,7 @@
  '(column-number-mode t)
  '(custom-enabled-themes '(leuven-dark))
  '(global-display-line-numbers-mode t)
- '(indent-tabs-mode t)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(ns-alternate-modifier 'super)
