@@ -48,9 +48,11 @@ directory that has a .git folder"
 
 (nw/c-mode-auto-enable)
 (defun nw/c-common-hook ()
+  (setq-default indent-tabs-mode nil)
   (c-set-offset 'substatement-open 0)
   (c-set-offset 'case-label 0)
   (c-set-offset 'statement-case-open 0)
+  (c-set-offset 'arglist-cont-nonempty '+)
   (setq c++-tab-always-indent t
 	   c-basic-offset 4
 	   c-indent-level 4

@@ -14,7 +14,7 @@
  '(ns-right-alternate-modifier 'none)
  '(ns-right-command-modifier 'super)
  '(package-selected-packages
-   '(yaml-mode yasnippet company dap-mode org-roam clang-format magit which-key multiple-cursors ivy))
+   '(markdown-mode projectile yaml-mode yasnippet company dap-mode org-roam clang-format magit which-key multiple-cursors ivy))
  '(scroll-bar-mode nil)
  '(tab-width 4)
  '(tool-bar-mode nil)
