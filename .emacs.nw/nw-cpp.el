@@ -57,6 +57,5 @@ directory that has a .git folder"
 	   c-indent-level 4
 	   tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)
 	   tab-width 4
-	   indent-tabs-mode t))
+	   indent-tabs-mode nil))
 (add-hook 'c-mode-common-hook 'nw/c-common-hook)
-
