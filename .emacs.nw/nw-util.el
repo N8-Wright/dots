@@ -1,3 +1,17 @@
+;; From https://manueluberti.eu/posts/2025-09-21-date-at-point/
+(defun nw/date-at-point (date)
+  "Insert current DATE at point via `completing-read'."
+  (interactive
+   (let* ((formats '("%Y%m%d" "%F" "%Y%m%d%H%M" "%Y-%m-%dT%T"))
+          (vals (mapcar #'format-time-string formats))
+          (opts
+           (lambda (string pred action)
+             (if (eq action 'metadata)
+                 '(metadata (display-sort-function . identity))
+               (complete-with-action action vals string pred)))))
+     (list (completing-read "Insert date: " opts nil t))))
+  (insert date))
+
 ;; From http://xahlee.info/emacs/emacs/elisp_generate_uuid.html
 (defun nw/insert-random-uuid ()
   (interactive)
@@ -29,4 +43,3 @@
                       (format "%x" (+ 8 (random 4)))
                       (substring xstr 17 20)
                       (substring xstr 20 32)))))))
-

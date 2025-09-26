@@ -44,8 +44,8 @@
 (keymap-global-set "C-c p" 'projectile-command-map)
 (keymap-global-set "C-q" 'company-yasnippet)
 (keymap-global-set "C-z g" 'vc-git-grep)
+(keymap-global-set "C-z d" 'nw/date-at-point)
 
 (load custom-file)
-
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
