@@ -5,14 +5,19 @@
  'ivy
  'multiple-cursors
  'which-key
- 'magit
  'clang-format
  'company
  'yasnippet
  'yaml-mode
  'projectile
  'markdown-mode
- 'powershell)
+ 'powershell
+ 'highlight-indent-guides
+ 'protobuf-mode
+ )
+
+(load "protobuf-mode.el")
+(require 'protobuf-mode)
 
 (load "nw-cpp.el")
 (load "nw-java.el")
@@ -27,6 +32,7 @@
 
 (ivy-mode)
 (which-key-mode)
+(editorconfig-mode)
 
 (unbind-key (kbd "C-z"))
 (unbind-key (kbd "C-]"))
@@ -38,6 +44,7 @@
 (keymap-global-set "C-z c" 'flyspell-auto-correct-previous-word)
 (keymap-global-set "C-c p" 'projectile-command-map)
 (keymap-global-set "C-q" 'company-yasnippet)
+(keymap-global-set "C-z g" 'vc-git-grep)
 
 (load custom-file)
 
