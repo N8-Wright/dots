@@ -28,6 +28,7 @@
 (load "nw-dired.el")
 (load "nw-project.el")
 (load "nw-prog.el")
+(load "nw-markdown.el")
 
 (ivy-mode)
 (which-key-mode)
